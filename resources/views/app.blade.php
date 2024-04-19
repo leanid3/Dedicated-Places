@@ -17,6 +17,10 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+        
+        {{-- <div id="app" data-user="{{ json_encode($user) }}"></div> --}}
+   
+        
         @inertia
     </body>
 </html>
