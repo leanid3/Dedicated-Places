@@ -4,9 +4,7 @@ import Cardproduct from "./Cardproduct";
 function Catalog({ arrayProduct }) {
     return (
         <div className="max-w-full">
-            <h2 className="text-darkblue text-3xl font-bold p-3">Каталог:</h2>
-
-            <div className="mx-4 md:mx-0 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-4 mx-4 md:mx-0 gap-5 flex flex-col">
                 {arrayProduct.data.map((product) => (
                     <Cardproduct key={product.id} product={product} />
                 ))}

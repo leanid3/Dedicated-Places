@@ -19,7 +19,7 @@ class PageController extends Controller
     public function home(Product $product)
     {
 
-        $arrayProduct = $product->with('brend')->paginate(10);
+        $arrayProduct = $product->with('brend')->paginate(5);
         return Inertia::render(
             'Mainpage',
             [

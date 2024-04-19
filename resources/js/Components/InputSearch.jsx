@@ -1,7 +1,7 @@
 import { useForm } from "@inertiajs/react";
 import { HiOutlineSearch } from "react-icons/hi";
 import React from "react";
-export default function InputSearch() {
+export default function InputSearch({className}) {
     const { data, setData, post, errors } = useForm({
         search: "",
     });
@@ -14,21 +14,21 @@ export default function InputSearch() {
     return (
         <form
             onSubmit={submit}
-            className="flex rounded-full border-2 shadow-lg *:bg-lightgrey"
+            className={className}
         >
             <input
-                placeholder="Поиск..."
+                placeholder="Поиск"
                 type="text"
                 name="search"
                 value={data.search}
                 onChange={(e) => setData("search", e.target.value)}
-                className="text-md lg:w-96 ps-10 rounded-s-full  placeholder:italic placeholder:text-darkblue placeholder:opacity-50 text-darkblue p-3"
+                className="text-md w-full text-black outline-none focus:border-transparent border-0 outline-0 placeholder:text-gray-700 placeholder:italic placeholder:opacity-50"
             />
             <button
                 type="submit"
-                className=" w-8 rounded-e-full text-center hover:bg-darkblue hover:text-lightgrey ps-1"
+                className=" text-2xl rounded-e-full text-center text-gray-700 hover:text-darkblue"
             >
-                <HiOutlineSearch />
+                <HiOutlineSearch/>
             </button>
             {errors.search && (
                 <div className="text-red-500">{errors.search}</div>
