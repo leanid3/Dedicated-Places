@@ -9,7 +9,7 @@ export default function Guest({ children }) {
                     href={route("home")}
                     className="text-darkblue w-20 h-20 fill-current text-center md:text-left text-xl md:text-3xl font-bold"
                 >
-                    DronShop
+                    Гид по заведениям
                 </Link>
             </div>
 

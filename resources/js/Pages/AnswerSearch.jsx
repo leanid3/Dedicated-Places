@@ -1,4 +1,4 @@
-// import AddCartButton from "@/Components/AddCartButton";
+import AddCartButton from "@/Components/AddCartButton";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 import React, { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ export default function AnswerSearch({ auth, products, searchQuery }) {
                                         </p>
                                     </div>
                                 </div>
-                                {/* <AddCartButton productId={product.id} /> */}
+                                 <AddCartButton productId={product.id} />
                             </div>
                         </div>
                     ))

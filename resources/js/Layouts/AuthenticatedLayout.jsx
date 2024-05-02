@@ -20,7 +20,7 @@ export default function Authenticated({ user, header, children }) {
                                     href={route("home")}
                                     className=" text-darkblue hover:text-darkblue/40 text-center md:text-left text-xl md:text-3xl font-bold"
                                 >
-                                    DronShop
+                                    Гид по заведениям
                                 </Link>
                             </div>
 
@@ -36,7 +36,7 @@ export default function Authenticated({ user, header, children }) {
                                     href={route("cart")}
                                     active={route().current("cart")}
                                 >
-                                    Корзина
+                                    Избранное
                                 </NavLink>
                             </div>
                         </div>

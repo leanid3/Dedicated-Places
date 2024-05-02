@@ -1,10 +1,12 @@
 import { useForm } from "@inertiajs/react";
 import { useState } from "react";
+import TextInput from "@/Components/TextInput.jsx";
 
 export default function CommentComponent({ auth, productId }) {
     const [message, setMessage] = useState();
     const { data, setData, post, errors, processing } = useForm({
         comment: "",
+        them_comment: "",
         product_id: productId,
     });
 
@@ -38,6 +40,21 @@ export default function CommentComponent({ auth, productId }) {
                     </span>
                 </div>
                 <form onSubmit={handleSubmit}>
+                    <div className="flex flex-col space-y-2">
+                        <label htmlFor="comment" className="text-gray-700 font-semibold text-lg">
+                            Тема комментария:
+                        </label>
+                        <input
+                            name="them_comment"
+                            type='text'
+                            value={data.them_comment}
+                            onChange={handleChange}
+                            className="border border-gray-300 rounded-md p-2"
+                        ></input>
+                        {errors.them_comment && (
+                            <div className="text-red-500">{errors.them_comment}</div>
+                        )}
+                    </div>
                     <div className="flex flex-col space-y-2">
                         <label htmlFor="comment" className="text-gray-700">
                             Ваш отзыв:

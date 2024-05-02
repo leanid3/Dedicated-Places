@@ -11,10 +11,12 @@ class Product extends Model
    protected  $fillable  = [
       'category_id',
       "title",
-       "phone",
       "description",
       "rating",
-      "image"
+      "image",
+       "phone",
+       "site",
+       "address",
    ];
 
    public function category()
@@ -22,15 +24,9 @@ class Product extends Model
       return $this->belongsTo(Category::class);
    }
 
-   public function brend()
-   {
-      return $this->belongsTo(Brend::class);
-   }
 
-   public function productFeatures()
-   {
-      return $this->hasMany(ProductFeatures::class);
-   }
+
+
 
    public function comments()
    {

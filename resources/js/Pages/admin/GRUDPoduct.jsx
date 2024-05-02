@@ -16,11 +16,11 @@ export default function GRUDPoduct({products, auth}) {
                       <th scope="col" >title</th>
                       <th scope="col" >description</th>
                       <th scope="col" >rating</th>
-                      <th scope="col" >price</th>
-                      <th scope="col" >status</th>
                       <th scope="col" >image</th>
                       <th scope="col" >Category</th>
-                      <th scope="col" >Brand</th>
+                      <th scope="col" >Phone</th>
+                      <th scope="col" >Site</th>
+                      <th scope="col" >Address</th>
                       <th scope="col" >Actions</th>
                   </tr>
                   </thead>

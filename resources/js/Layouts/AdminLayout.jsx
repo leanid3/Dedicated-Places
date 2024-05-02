@@ -19,7 +19,7 @@ export default function AdminLayout({user, header, children }) {
                                     href={route("adminMainPage")}
                                     className=" text-darkblue hover:text-darkblue/40 text-center md:text-left text-xl md:text-3xl font-bold"
                                 >
-                                    DronShop
+                                    Гид по заведениям
                                 </Link>
                             </div>
 

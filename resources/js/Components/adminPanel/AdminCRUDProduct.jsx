@@ -16,8 +16,6 @@ export default function AdminCRUDProduct({product}) {
                 <td className='text-xl font-semibold hover:underline'>{product.title}</td>
                 <td className="text-gray-500">{product.description}</td>
                 <td className="text-yellow-600">{product.rating}</td>
-                <td className="text-blue-600">{product.price}</td>
-                <td>{product.status}</td>
                 <td>
                     <img
                         className="w-20 h-20 rounded-md mr-4"
@@ -26,7 +24,9 @@ export default function AdminCRUDProduct({product}) {
                     />
                 </td>
                 <td>{product.category.categoryName}</td>
-                <td>{product.brend.brend}</td>
+                <td>{product.phone}</td>
+                <td><a className={'text-blue-700 hover:underline'} href={product.site}>{product.site}</a></td>
+                <td>{product.address}</td>
                 <td className='flex flex-col'>
                     <button
                         className="bg-red-700 text-white text-lg px-3 py-2 rounded-md hover:bg-red-800 focus:outline-none"

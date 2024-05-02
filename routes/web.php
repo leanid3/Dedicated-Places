@@ -17,16 +17,16 @@ use App\Models\Brend;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/catalog/{id}', [ProductController::class, 'showProduct'])->name('showProduct');
-
+//Route::get('/paginate', [PageController::class, 'paginate'])->name('paginate');
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
-        'radioitems' => Brend::pluck('brend')
-    ]);
+    return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/search', [searchController::class, 'search'])->name('search');
 Route::get('/answersearch', [searchController::class, 'answersearch'])->name('answersearch');
 
+Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
+Route::post('/feedback', [PageController::class, 'feedbackPost'])->name('feedbackPost');
 
 Route::middleware('auth')->group(function () {
     Route::post('/createformpost', [TestformController::class, 'submitdef'])->name('indexForm');

@@ -29,26 +29,26 @@ export default function Product({ product, auth, comments }) {
                                 <p className="font-semibold">Категория:</p>
                                 <p>{product.category.categoryName}</p>
                             </div>
-                            <div>
-                                <p className="font-semibold">Бренд:</p>
-                                <p>{product.brend.brend}</p>
-                            </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                            <div>
-                                <p className="font-semibold">Статус:</p>
-                                <p>{product.status}</p>
-                            </div>
+                        <div className="gap-4 mb-6">
                             <div>
                                 <p className="font-semibold">Рейтинг:</p>
                                 <p>{product.rating}</p>
                             </div>
-                        </div>
-                        <div>
-                            <p className="font-semibold">Цена:</p>
-                            <p className="text-xl text-blue-500">
-                                ${product.price}
-                            </p>
+                            {product.address && <div>
+                                <p className="font-semibold">Адрес:</p>
+                                <p>{product.address}</p>
+                            </div>}
+
+                            {product.phone && <div>
+                                <p className="font-semibold">Телефон:</p>
+                                <p>{product.phone}</p>
+                            </div>}
+                            {product.site &&
+                            <div>
+                                <p className="font-semibold">Сайт:</p>
+                                <a href={product.site} className={'text-blue-700 hover:underline'}>{product.site}</a>
+                            </div>}
                         </div>
                         <AddCartButton productId={product.id} />
                     </div>

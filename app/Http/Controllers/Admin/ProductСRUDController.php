@@ -49,12 +49,12 @@ class ProductСRUDController extends Controller
 
         Product::create([
             'category_id' => $request->postCategory,
-            'brend_id' => $request->postBrend,
             'title' => $request->postTitle,
             'description' => $request->postDescription,
             'rating' => $request->postRating,
-            'price' => $request->postPrice,
-            'status' => $request->postResRadio,
+            'phone' => $request->postPhone,
+            'address' => $request->postAddress,
+            'site' => $request->postSite,
             'image' =>  '/storage/' . $image
         ]);
     }
@@ -76,12 +76,10 @@ class ProductСRUDController extends Controller
     {
         $hasProduct = Product::with('category', 'brend')->findOrFail($id);
 
-        $brends = Brend::select('brend', 'id')->get();
         $categories = Category::select('categoryName', 'id')->get();
 
         return Inertia::render('Admin/UpdatePost', [
             'product' => $hasProduct,
-            'brends' => $brends,
             'categories' => $categories
         ]);
     }

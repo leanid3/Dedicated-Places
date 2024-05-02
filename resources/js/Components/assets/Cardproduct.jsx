@@ -8,47 +8,70 @@ import {BsTelephone} from "react-icons/bs";
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import { CiGlobe } from "react-icons/ci";
 export default function Cardproduct({ product }) {
-    const [imageLoad, setImageLoad] = useState(true);
+    const [imageLoad, setImageLoad] = useState(false);
 
     const handleImageLoad = () => {
-        setImageLoad(false);
+        setImageLoad(true);
     };
 
     return (
-        <article className="flex flex-row border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-            <Link className='w-1/4 h-full' href={route("showProduct", { id: product.id })}>
+        <article
+            className="flex flex-col md:flex-row border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+            {/* Изображение продукта */}
+            <Link className='w-full md:w-1/4 h-auto' href={route("showProduct", {id: product.id})}>
+                {imageLoad ?
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                        className="object-cover"
+                    />
+                    : <div className="w-full h-48 animate-pulse  bg-gray-200 flex items-center justify-center">
+                        Загрузка...
+                    </div>
+                }
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="object-cove"
+                    className="object-cover"
                     onLoad={handleImageLoad}
+                    style={{display: "none"}}
                 />
             </Link>
-            <div className=" flex flex-row px-5">
-                <div className='flex flex-col py-5 ps-4 '>
+
+            {/* Информация о продукте */}
+            <div className="flex flex-col justify-between px-5 py-3 w-full md:w-3/4">
+                {/* Заголовок продукта */}
+                <div>
                     <Link
-                        href={route("showProduct", { id: product.id })}
+                        href={route("showProduct", {id: product.id})}
                         className="text-2xl font-semibold text-black hover:underline"
                     >
                         {product.title}
                     </Link>
-                    {product.address && <p className="text-sm text-gray-600"><LiaMapMarkerAltSolid/> {product.social.address}</p>}
-                    {product.phone && <p className="text-sm flex text-gray-600"> <BsTelephone /> {product.phone}</p>}
-                    {product.site && <a href={product.social.site} className="text-sm flex text-gray-600"> <CiGlobe /> {product.social.site}</a>}
-
-                    <p className='text-md'>{product.description}</p>
+                    {product.address &&
+                        <p className="text-sm items-center justify-start text-gray-600 flex gap-3"><LiaMapMarkerAltSolid/> {product.address}</p>}
+                    {product.phone && <p className="text-sm items-center justify-start text-gray-600 flex gap-3"><BsTelephone/> {product.phone}</p>}
+                    {product.site && <a href={product.site} className="text-sm items-center justify-start text-blue-500 hover:underline flex gap-3">
+                        <CiGlobe/> {product.site}</a>}
                 </div>
-                <div className="flex flex-col items-center mt-2">
-                    <div className='flex gap-2 flex-row'>
-                        <p className='text-2xl my-auto'>{product.rating}  </p>
+
+                {/* Описание продукта */}
+                <p className='text-md mt-4 font-medium'>{product.description}</p>
+
+                {/* Рейтинг продукта */}
+                <div className='flex flex-col md:flex-row items-center md:items-end mt-4'>
+                    <div className='flex gap-2'>
+                        <p className='text-2xl'>{product.rating}  </p>
                         <StarOut title={'оценка экспертов'} rating={product.rating}/>
                     </div>
-                    <div className='flex gap-2 flex-row'>
-                        <p className='text-2xl gap-3 my-auto'>{product.rating}  </p>
-                        <StarOut title={'оценка экспертов'} rating={product.rating}/>
+                    <div className='flex gap-2 mt-2 md:mt-0'>
+
                     </div>
                 </div>
             </div>
+
+            <AddCartButton productId={product.id} />
         </article>
+
     );
 }

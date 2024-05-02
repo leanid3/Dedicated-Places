@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brend extends Model
+class Feedback extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-
     protected $fillable = [
-        'brend'
+        'email',
+        'title',
+        'description'
     ];
-    public function product()
-    {
-        return $this->hasMany(Product::class);
-    }
 }

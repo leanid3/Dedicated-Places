@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'categoryName'=>fake()->randomElement(['Профессиональные квадрокоптеры', 'Хобби и развлечения', 'Детские квадрокоптеры'. 'Квадрокоптеры для начинающих', 'Квадрокоптеры для съемки', 'Квадрокоптеры для экстремальных видов спорта' ])
+            'categoryName'=>fake()->unique()->randomElement([ 'Еда', 'Развлечения и досуг', 'Магазины', 'Здоровье'])
         ];
     }
 }

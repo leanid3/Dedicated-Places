@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
+use Carbon\Carbon;
 use Inertia\Inertia;
 use App\Models\Product;
 use Egulias\EmailValidator\Parser\Comment;
@@ -17,8 +18,8 @@ class ProductController extends Controller
     {
         $product = Product::with( 'category')->findOrFail($id);
 
-
         $comments = Comments::where('product_id', $id)->with('product', 'user')->get();
+
         return Inertia::render('Product', [
             'product' => $product,
             'comments' => $comments
@@ -35,6 +36,7 @@ class ProductController extends Controller
         }
 
         $request->validate([
+            'them_comment' => ['required', 'string','max:100'],
             'comment' => ['required', 'min:5'],
             'product_id' => ['required', 'exists:products,id'],
 
@@ -43,6 +45,7 @@ class ProductController extends Controller
         $user = Auth::user()->id;
 
         Comments::create([
+            'them_comment' => $request->them_comment,
             'comment' => $request->comment,
             'product_id' => $request->product_id,
             'user_id' => $user,

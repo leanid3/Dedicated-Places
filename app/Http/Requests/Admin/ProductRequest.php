@@ -22,14 +22,14 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "postBrend" => ['required', 'exists:brends,id'],
             "postCategory" => ['required', 'exists:categories,id'],
             "postTitle" => ['required'],
             "postDescription" => ['required', 'min:5'],
             "postRating" => ['required', 'numeric', 'min:0', 'max:5'],
-            "postPrice" => ['required', 'integer'],
-            "postResRadio" => ['required'],
             "postImage" => ['nullable', 'image', 'mimes:png,jpg', 'max:2048'],
+            "postPhone" => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            "postSite" => ['nullable', 'url'],
+            "postAddress" => ['nullable', 'string'],
         ];
     }
 }

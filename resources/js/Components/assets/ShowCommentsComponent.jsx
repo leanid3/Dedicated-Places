@@ -1,6 +1,12 @@
 import React from "react";
 
 export default function ShowCommentsComponent({ comments }) {
+
+    const ConvertDataTime = (dataTime) =>{
+        const data = new Date(dataTime);
+        return data.toLocaleString()
+    }
+
     return (
         <div className="mt-4">
             {!comments || comments.length === 0 ? (
@@ -24,6 +30,17 @@ export default function ShowCommentsComponent({ comments }) {
                             <h3 className="text-darkblue font-semibold text-lg text-center md:text-left">
                                 {comment.user.name}
                             </h3>
+
+                            <div className="text-center md:text-left">
+                                <label>Тема комментария:</label>
+                                <p
+                                    style={{ width: "90%" }}
+                                    className="text-gray-800 font-semibold text-lg"
+                                >
+                                    {comment.them_comment}
+                                </p>
+                            </div>
+
                             <div className="text-center md:text-left">
                                 <label>Комментарий:</label>
                                 <p
@@ -34,11 +51,12 @@ export default function ShowCommentsComponent({ comments }) {
                                 </p>
                             </div>
                             <div className="text-center md:text-left">
+                               <label>Время добавления:</label>
                                 <p
                                     style={{ width: "90%" }}
                                     className="text-gray-500 text-sm"
                                 >
-                                    {comment.created_at}
+                                    {ConvertDataTime(comment.created_at)}
                                 </p>
                             </div>
                         </div>

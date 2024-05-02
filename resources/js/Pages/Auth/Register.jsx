@@ -77,7 +77,6 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="avatar"
                         onChange={(e) => setData("avatar", e.target.files[0])}
-                        required
                     />
                     {progress && (
                         <progress value={progress.percentage} max={100}>

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title');
-            $table->string('phone');
+            $table->string('phone')->nullable();
+            $table->string('site')->nullable();
+            $table->string('address');
             $table->text('description');
             $table->float('rating');
             $table->text('image')->nullable();
