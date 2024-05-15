@@ -11,14 +11,15 @@ export default function UpdatePost({auth, product}) {
     const [message, setMessage] = useState("");
     const { brends, categories, status } = usePage().props;
     const { data, setData, post, errors, processing, progress } = useForm({
-            postBrend: product.brend.id,
         postCategory: product.category.id,
         postTitle: product.title,
         postDescription: product.description,
         postRating: product.rating,
-        postPrice: product.price,
         postResRadio: product.status,
         postImage:  product.image,
+        postPhone: "",
+        postSite: "",
+        postAddress:"",
     });
 
     const hundleTarget = (e) => {

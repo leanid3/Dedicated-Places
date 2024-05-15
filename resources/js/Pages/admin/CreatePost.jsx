@@ -17,7 +17,6 @@ export default function CreatePost({ auth }) {
         postAddress:"",
         postDescription: "",
         postRating: 0,
-        postPrice: 0,
         postResRadio: "",
         postImage: null,
     });

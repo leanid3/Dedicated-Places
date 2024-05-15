@@ -21,7 +21,7 @@ class ProductСRUDController extends Controller
     public function index(Product $product)
     {
         return Inertia::render('Admin/GRUDPoduct', [
-            'products' => $product->with('category', 'brend')->get(),
+            'products' => $product->with('category')->get(),
         ]);
     }
 
@@ -32,7 +32,6 @@ class ProductСRUDController extends Controller
     {
         return Inertia::render('Admin/CreatePost', [
             'categories' => Category::select('categoryName', 'id')->get(),
-            'brends' => Brend::select('brend', 'id')->get(),
             'status' => ['в наличии', 'нет в наличии'],
         ]);
     }
@@ -74,7 +73,7 @@ class ProductСRUDController extends Controller
      */
     public function edit($id)
     {
-        $hasProduct = Product::with('category', 'brend')->findOrFail($id);
+        $hasProduct = Product::with('category')->findOrFail($id);
 
         $categories = Category::select('categoryName', 'id')->get();
 
@@ -87,12 +86,12 @@ class ProductСRUDController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, )
+    public function update(ProductRequest $product, )
     {
-        $request->validated();
+        $product->validated();
 
-        if ($request->hasFile('postImage')) {
-            $imagePath =  $request->file('postImage')->store('productImage', 'public');
+        if ($product->hasFile('postImage')) {
+            $imagePath =  $product->file('postImage')->store('productImage', 'public');
             if ($product->image) {
                 Storage::delete($product->image);
             }
@@ -102,11 +101,8 @@ class ProductСRUDController extends Controller
         $product->update([
             'title' => $request->postTitle,
             'category_id' => $request->postCategory,
-            'brend_id' => $request->postBrend,
             'description' => $request->postDescription,
             'rating' => $request->postRating,
-            'price' => $request->postPrice,
-            'status' => $request->postResRadio,
             'image' => '/' . $imagePath,
         ]);
 

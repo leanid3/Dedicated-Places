@@ -24,7 +24,6 @@ export default function ProductsiCart({ item }) {
                     >
                         {item.product.title}
                     </Link>
-                    <p className="text-gray-500">Количество: {item.quantity}</p>
                     <p className="text-gray-600">{item.product.description}</p>
                 </div>
             </div>
