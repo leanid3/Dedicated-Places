@@ -2,19 +2,17 @@ import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 import TextInput from "@/Components/TextInput.jsx";
 
-export default function CommentComponent({ auth, productId }) {
+export default function CommentComponent({ auth, productId, params }) {
     const [message, setMessage] = useState();
     const { data, setData, post, errors, processing } = useForm({
         comment: "",
-        them_comment: "",
+        postParam: "",
         product_id: productId,
     });
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData(name, value);
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("comments.product"), {
@@ -44,15 +42,19 @@ export default function CommentComponent({ auth, productId }) {
                         <label htmlFor="comment" className="text-gray-700 font-semibold text-lg">
                             Тема комментария:
                         </label>
-                        <input
-                            name="them_comment"
-                            type='text'
-                            value={data.them_comment}
+                        <select
+                            name="postParam"
+                            value={data.postParam}
                             onChange={handleChange}
-                            className="border border-gray-300 rounded-md p-2"
-                        ></input>
-                        {errors.them_comment && (
-                            <div className="text-red-500">{errors.them_comment}</div>
+                            className="px-3 py-2 text-center font-medium"
+                        >
+                            <option value="" selected='selected'>не выбранно</option>
+                            {params.map(({name, id}, index) => {
+                              return  <option value={id} key={index}>{name}</option>
+                            })}
+                        </select>
+                        {errors.postParam && (
+                            <div className="text-red-500">{errors.postParam}</div>
                         )}
                     </div>
                     <div className="flex flex-col space-y-2">

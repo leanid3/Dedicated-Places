@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('title');
+            $table->string('nosology');
             $table->text('description');
             $table->timestamps();
         });

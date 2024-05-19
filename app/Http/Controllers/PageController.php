@@ -58,7 +58,7 @@ class PageController extends Controller
     public  function feedbackPost(Request $request){
        $message =  $request->validate([
             'email' => ['required', 'email'],
-            'title' => ['required', 'min:3'],
+            'param' => ['required'],
             'description' => ['required', 'min:3'],
         ]);
         Feedback::create($message);

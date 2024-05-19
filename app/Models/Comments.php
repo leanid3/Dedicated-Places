@@ -9,7 +9,7 @@ class Comments extends Model
 {
     use HasFactory;
     protected $fillable  = [
-        'them_comment',
+        'params_id',
         'comment',
         'user_id',
         'product_id',
@@ -18,6 +18,10 @@ class Comments extends Model
     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+    public function Params()
+    {
+        return $this->belongsTo(Params::class);
     }
 
     public function Product()

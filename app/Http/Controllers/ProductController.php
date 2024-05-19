@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comments;
+use App\Models\Params;
 use Carbon\Carbon;
 use Inertia\Inertia;
 use App\Models\Product;
@@ -18,10 +19,11 @@ class ProductController extends Controller
     {
         $product = Product::with( 'category')->findOrFail($id);
 
-        $comments = Comments::where('product_id', $id)->with('product', 'user')->get();
+        $comments = Comments::where('product_id', $id)->with('product', 'user', 'params')->get();
 
         return Inertia::render('Product', [
             'product' => $product,
+            'params' => Params::all(),
             'comments' => $comments
         ]);
     }
@@ -36,16 +38,15 @@ class ProductController extends Controller
         }
 
         $request->validate([
-            'them_comment' => ['required', 'string','max:100'],
+            'postParam' => ['required'],
             'comment' => ['required', 'min:5'],
             'product_id' => ['required', 'exists:products,id'],
-
         ]);
 
         $user = Auth::user()->id;
 
         Comments::create([
-            'them_comment' => $request->them_comment,
+            'params_id' => $request->postParam,
             'comment' => $request->comment,
             'product_id' => $request->product_id,
             'user_id' => $user,

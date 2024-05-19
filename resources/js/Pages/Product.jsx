@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import CommentComponent from "@/Components/assets/CommentComponent";
 import AddCartButton from "@/Components/AddCartButton";
 
-export default function Product({ product, auth, comments }) {
+export default function Product({ product, auth, comments, params }){
     return (
         <Layout auth={auth}>
             <div className="container mx-auto px-4 py-8">
@@ -59,7 +59,7 @@ export default function Product({ product, auth, comments }) {
                         учетную запись.
                     </div>
                 ) : (
-                    <CommentComponent auth={auth} productId={product.id} />
+                    <CommentComponent auth={auth} params={params} productId={product.id} />
                 )}
                 <ShowCommentsComponent comments={comments} />
             </div>

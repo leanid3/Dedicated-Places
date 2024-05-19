@@ -19,6 +19,7 @@ const ObderCategory = ({arrayProduct, categories}) => {
                 }
                 )}
             </select>
+
             {sortProduct.map((product) => (
                 <Cardproduct product={product}/>
             ))}
